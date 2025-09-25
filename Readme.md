@@ -29,8 +29,8 @@ This will start the service immediately in the foreground, without becoming a Wi
 
 ## Arguments
 
-1. **MODE tcp|rtu**: (Default `tcp`) Defines the listener protocol (either `tcp` or `rtu`).
-    `tcp`: listens for tcp, it will forward data as rtu over tcp.
+1. **MODE tcp|rtu**: (Default `tcp`) Defines the listener protocol (either `tcp` or `rtu`).  
+    `tcp`: listens for tcp, it will forward data as rtu over tcp.  
     `rtu`: listens for rtu, it will forward data as tcp.
 
 2. **LISTEN_PORT**: (Default `1502`) TCP Port to listen for incoming connections
@@ -41,16 +41,22 @@ This will start the service immediately in the foreground, without becoming a Wi
 
 ## Examples
 
-example: modbus_gateway
-example: modbus_gateway tcp 1502 127.0.0.1 502
+example:
+```sh
+modbus_gateway
+```
+example:
+```sh
+modbus_gateway tcp 1502 127.0.0.1 502
+```
 both examples are providing a tcp to rtu over tcp gateway.
 
 For testing scenarios you can also couple tcp and rtu gateways:
-modbus_slave_simulator (ex. pyModSlave) on port 502
-modbus_gateway rtu 1503 127.0.0.1 502
-modbus_gateway tcp 1502 127.0.0.1 1503
-modbus_master_tester (ex. qMopMaster) to 127.0.0.1 1502
-result:
+modbus_slave_simulator (ex. pyModSlave) on port 502  
+modbus_gateway rtu 1503 127.0.0.1 502  
+modbus_gateway tcp 1502 127.0.0.1 1503  
+modbus_master_tester (ex. qMopMaster) to 127.0.0.1 1502  
+result:  
 modbus_master_tester -> modbus_gateway tcp -> modbus_gateway rtu -> modbus_slave_simulator
 
 
